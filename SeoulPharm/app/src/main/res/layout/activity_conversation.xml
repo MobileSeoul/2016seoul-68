@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ConversationActivity">
+
+    <!-- As the main content view, the view below consumes the entire
+         space available using match_parent in both dimensions. -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Toolbar -->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#76a6f0"
+            android:minHeight="?attr/actionBarSize"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <Button
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:background="@drawable/ic_hamburger"
+                android:id="@+id/nav_hamburger_btn" />
+
+            <com.daejong.seoulpharm.widget.NotoTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/toolbar_title"
+                android:textColor="@color/color_white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="의사소통" />
+
+            <Button
+                android:id="@+id/spinner"
+                android:layout_gravity="right"
+                android:layout_width="80dp"
+                android:layout_height="30dp"
+                android:background="@drawable/btn_kor"
+                android:layout_marginRight="16dp"/>
+
+        </android.support.v7.widget.Toolbar>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/main_toolbar">
+
+            <TabHost
+                android:id="@android:id/tabhost"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:id="@android:id/tabcontent"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp">
+                    </FrameLayout>
+
+                    <com.daejong.seoulpharm.view.ConversationCustomTabView
+                        android:id="@+id/customTab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </com.daejong.seoulpharm.view.ConversationCustomTabView>
+
+                    <TabWidget
+                        android:id="@android:id/tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:showDividers="none" >
+                    </TabWidget>
+
+                    <android.support.v4.view.ViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="9"
+                        android:id="@+id/pager" />
+
+                </LinearLayout>
+            </TabHost>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include layout="@layout/navigation_drawer" />
+</android.support.v4.widget.DrawerLayout>
